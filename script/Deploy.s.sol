@@ -8,9 +8,10 @@ import {Marketplace} from "../src/Marketplace.sol";
 
 contract Deploy is Script {
     function run() external {
-        address deployer = msg.sender;
+        uint256 pk = vm.envUint("PRIVATE_KEY");
+        address deployer = vm.addr(pk);
 
-        vm.startBroadcast();
+        vm.startBroadcast(pk);
 
         address nftProxy = Upgrades.deployTransparentProxy(
             "SimpleNFT.sol",
