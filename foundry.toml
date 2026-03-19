@@ -1,0 +1,10 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+bytecode_hash = "none"
+cbor_metadata = false
+build_info = true
+ffi = true
+ast = true
+extra_output = ["storageLayout"]
