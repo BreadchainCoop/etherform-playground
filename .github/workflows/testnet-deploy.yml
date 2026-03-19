@@ -2,8 +2,8 @@ name: Testnet Deploy
 
 on:
   push:
-    branches: [main]
-    tags: [testnet-deploy-*]
+    tags: 
+      - "testnet-deploy-*"
 
 jobs:
   ci:
@@ -11,8 +11,25 @@ jobs:
     with:
       check-formatting: false
 
+  check-main:
+    runs-on: ubuntu-latest
+    outputs:
+      on_main: ${{ steps.check.outputs.on_main }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - id: check
+        run: |
+          git fetch origin main
+          if git merge-base --is-ancestor "$GITHUB_SHA" origin/main; then
+            echo "on_main=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "on_main=false" >> "$GITHUB_OUTPUT"
+          fi
+
   deploy-testnet:
-    needs: [ci]
+    needs: [ci, check-main]
     uses: BreadchainCoop/etherform/.github/workflows/_deploy-testnet.yml@Rubydusa/separate-verification-job-from-deployment
     with:
       deploy-script: "script/Deploy.s.sol:Deploy"
