@@ -24,17 +24,12 @@ contract UpgradeTest is Test {
         vm.deal(buyer, 100 ether);
 
         nftProxy = Upgrades.deployTransparentProxy(
-            "SimpleNFT.sol",
-            owner,
-            abi.encodeCall(SimpleNFT.initialize, ("SimpleNFT", "SNFT", owner))
+            "SimpleNFT.sol", owner, abi.encodeCall(SimpleNFT.initialize, ("SimpleNFT", "SNFT", owner))
         );
         nft = SimpleNFT(nftProxy);
 
-        marketplaceProxy = Upgrades.deployTransparentProxy(
-            "Marketplace.sol",
-            owner,
-            abi.encodeCall(Marketplace.initialize, (owner))
-        );
+        marketplaceProxy =
+            Upgrades.deployTransparentProxy("Marketplace.sol", owner, abi.encodeCall(Marketplace.initialize, (owner)));
         marketplace = Marketplace(marketplaceProxy);
     }
 
@@ -45,10 +40,7 @@ contract UpgradeTest is Test {
         nft.safeMint(seller);
 
         Upgrades.upgradeProxy(
-            nftProxy,
-            "SimpleNFTV2.sol",
-            abi.encodeCall(SimpleNFTV2.reinitialize, ("https://example.com/", 100)),
-            owner
+            nftProxy, "SimpleNFTV2.sol", abi.encodeCall(SimpleNFTV2.reinitialize, ("https://example.com/", 100)), owner
         );
 
         SimpleNFTV2 nftV2 = SimpleNFTV2(nftProxy);
@@ -61,10 +53,7 @@ contract UpgradeTest is Test {
 
     function test_upgradeSimpleNFT_maxSupply() public {
         Upgrades.upgradeProxy(
-            nftProxy,
-            "SimpleNFTV2.sol",
-            abi.encodeCall(SimpleNFTV2.reinitialize, ("https://example.com/", 2)),
-            owner
+            nftProxy, "SimpleNFTV2.sol", abi.encodeCall(SimpleNFTV2.reinitialize, ("https://example.com/", 2)), owner
         );
 
         SimpleNFTV2 nftV2 = SimpleNFTV2(nftProxy);
@@ -95,10 +84,7 @@ contract UpgradeTest is Test {
 
     function test_upgradeSimpleNFT_reinitializerCannotBeCalledTwice() public {
         Upgrades.upgradeProxy(
-            nftProxy,
-            "SimpleNFTV2.sol",
-            abi.encodeCall(SimpleNFTV2.reinitialize, ("https://example.com/", 100)),
-            owner
+            nftProxy, "SimpleNFTV2.sol", abi.encodeCall(SimpleNFTV2.reinitialize, ("https://example.com/", 100)), owner
         );
 
         SimpleNFTV2 nftV2 = SimpleNFTV2(nftProxy);

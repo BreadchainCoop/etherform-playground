@@ -26,7 +26,9 @@ contract MarketplaceV2 is OwnableUpgradeable, ReentrancyGuardTransient {
     address public feeRecipient;
     uint256 public accumulatedFees;
 
-    event NFTListed(uint256 indexed listingId, address indexed seller, address indexed nftContract, uint256 tokenId, uint256 price);
+    event NFTListed(
+        uint256 indexed listingId, address indexed seller, address indexed nftContract, uint256 tokenId, uint256 price
+    );
     event NFTSold(uint256 indexed listingId, address indexed buyer, uint256 price);
     event ListingCancelled(uint256 indexed listingId);
 
@@ -57,13 +59,8 @@ contract MarketplaceV2 is OwnableUpgradeable, ReentrancyGuardTransient {
         IERC721(nftContract).transferFrom(msg.sender, address(this), tokenId);
 
         uint256 listingId = _nextListingId++;
-        listings[listingId] = Listing({
-            seller: msg.sender,
-            nftContract: nftContract,
-            tokenId: tokenId,
-            price: price,
-            active: true
-        });
+        listings[listingId] =
+            Listing({seller: msg.sender, nftContract: nftContract, tokenId: tokenId, price: price, active: true});
         _activeListingId[nftContract][tokenId] = listingId;
 
         emit NFTListed(listingId, msg.sender, nftContract, tokenId, price);
