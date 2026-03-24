@@ -15,14 +15,12 @@ contract MarketplaceV2 is OwnableUpgradeable, ReentrancyGuardTransient {
         bool active;
     }
 
-    // bad storage change
-    uint256 public feePercentage;
-
     uint256 private _nextListingId;
     mapping(uint256 => Listing) public listings;
     mapping(address => mapping(uint256 => uint256)) private _activeListingId;
 
     // --- V2 storage (appended) ---
+    uint256 public feePercentage;
     address public feeRecipient;
     uint256 public accumulatedFees;
 
