@@ -1,12 +1,10 @@
 {
   "contracts": [
     {
-      "contract": "src/MarketplaceV2.sol:MarketplaceV2",
-      "reference": "src/Marketplace.sol:Marketplace"
+      "contract": "src/Marketplace.sol:Marketplace"
     },
     {
-      "contract": "src/SimpleNFTV2.sol:SimpleNFTV2",
-      "reference": "src/SimpleNFT.sol:SimpleNFT"
+      "contract": "src/SimpleNFT.sol:SimpleNFT"
     }
   ]
 }
