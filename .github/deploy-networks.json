@@ -3,7 +3,7 @@
     {
       "name": "sepolia",
       "chain_id": 11155111,
-      "blockscout_url": "https://sepolia.drpc.org",
+      "blockscout_url": "https://eth-sepolia.blockscout.com",
       "environment": "testnet"
     }
   ]
