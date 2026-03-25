@@ -1,4 +1,3 @@
-
 name: CI/CD
 
 on:
@@ -24,5 +23,5 @@ jobs:
       run-upgrade-safety: true
       run-coverage: true
     secrets:
-      PRIVATE_KEY: ${{ secrets.DEPLOYER_PRIVATE_KEY }}
-      RPC_URL: ${{ secrets.SEPOLIA_RPC_URL }}
+      PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+      RPC_URL: ${{ secrets.RPC_URL }}
