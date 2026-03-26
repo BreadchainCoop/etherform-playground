@@ -15,7 +15,6 @@ contract Marketplace is OwnableUpgradeable, ReentrancyGuardTransient {
     }
 
     uint256 private _nextListingId;
-    uint256 private _shouldNotBeHere;
     mapping(uint256 => Listing) public listings;
     mapping(address => mapping(uint256 => uint256)) private _activeListingId;
 
