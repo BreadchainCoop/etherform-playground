@@ -17,7 +17,6 @@ contract Marketplace is OwnableUpgradeable, ReentrancyGuardTransient {
     uint256 private _nextListingId;
     mapping(uint256 => Listing) public listings;
     mapping(address => mapping(uint256 => uint256)) private _activeListingId;
-    uint256 private _addNewThing;
 
     event NFTListed(
         uint256 indexed listingId, address indexed seller, address indexed nftContract, uint256 tokenId, uint256 price
