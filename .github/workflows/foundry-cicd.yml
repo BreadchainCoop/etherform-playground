@@ -11,7 +11,7 @@ on:
 
 jobs:
   foundry:
-    uses: BreadchainCoop/etherform/.github/workflows/_foundry-cicd.yml@Rubydusa/saving-circles-with-upgrade-safety-no-baseline
+    uses: BreadchainCoop/etherform/.github/workflows/_foundry-cicd.yml@main
     permissions:
       contents: read
       pull-requests: write
