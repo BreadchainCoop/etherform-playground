@@ -12,9 +12,7 @@ contract SimpleNFTTest is Test {
 
     function setUp() public {
         address proxy = Upgrades.deployTransparentProxy(
-            "SimpleNFT.sol",
-            owner,
-            abi.encodeCall(SimpleNFT.initialize, ("SimpleNFT", "SNFT", owner))
+            "SimpleNFT.sol", owner, abi.encodeCall(SimpleNFT.initialize, ("SimpleNFT", "SNFT", owner))
         );
         nft = SimpleNFT(proxy);
     }
