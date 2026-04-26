@@ -19,12 +19,17 @@ contract MarketplaceTest is Test {
         vm.deal(buyer, 100 ether);
 
         address nftProxy = Upgrades.deployTransparentProxy(
-            "SimpleNFT.sol", owner, abi.encodeCall(SimpleNFT.initialize, ("SimpleNFT", "SNFT", owner))
+            "SimpleNFT.sol",
+            owner,
+            abi.encodeCall(SimpleNFT.initialize, ("SimpleNFT", "SNFT", owner))
         );
         nft = SimpleNFT(nftProxy);
 
-        address marketplaceProxy =
-            Upgrades.deployTransparentProxy("Marketplace.sol", owner, abi.encodeCall(Marketplace.initialize, (owner)));
+        address marketplaceProxy = Upgrades.deployTransparentProxy(
+            "Marketplace.sol",
+            owner,
+            abi.encodeCall(Marketplace.initialize, (owner))
+        );
         marketplace = Marketplace(marketplaceProxy);
     }
 
