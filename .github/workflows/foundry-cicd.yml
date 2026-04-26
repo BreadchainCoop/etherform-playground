@@ -17,10 +17,8 @@ jobs:
       pull-requests: write
     with:
       deploy-on-pr: true
-      deploy-on-main: false
       deploy-script: "script/Deploy.s.sol:Deploy"
       run-slither: false
-      run-upgrade-safety: true
       run-coverage: true
     secrets:
       PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
