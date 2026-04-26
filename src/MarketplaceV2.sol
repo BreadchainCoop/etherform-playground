@@ -23,6 +23,7 @@ contract MarketplaceV2 is OwnableUpgradeable, ReentrancyGuardTransient {
     uint256 public feePercentage;
     address public feeRecipient;
     uint256 public accumulatedFees;
+    uint256 public test;
 
     event NFTListed(
         uint256 indexed listingId, address indexed seller, address indexed nftContract, uint256 tokenId, uint256 price
