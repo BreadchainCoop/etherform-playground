@@ -8,7 +8,7 @@ jobs:
     if: github.event.pull_request.merged == true
     permissions:
       contents: write
-    uses: BreadchainCoop/etherform/.github/workflows/_release-testnet.yml@main
+    uses: BreadchainCoop/etherform/.github/workflows/_release-testnet.yml@Rubydusa/address-release-on-merge
     with:
       deploy-script: script/Deploy.s.sol:Deploy
     secrets:
