@@ -11,6 +11,7 @@ jobs:
     uses: BreadchainCoop/etherform/.github/workflows/_release-testnet.yml@Rubydusa/address-release-on-merge
     with:
       deploy-script: script/Deploy.s.sol:Deploy
+      etherform-ref: Rubydusa/address-release-on-merge
     secrets:
       PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
       RPC_URL: ${{ secrets.RPC_URL }}
