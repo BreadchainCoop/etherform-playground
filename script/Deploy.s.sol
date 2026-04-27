@@ -14,16 +14,12 @@ contract Deploy is Script {
         vm.startBroadcast(pk);
 
         address nftProxy = Upgrades.deployTransparentProxy(
-            "SimpleNFT.sol",
-            deployer,
-            abi.encodeCall(SimpleNFT.initialize, ("SimpleNFT", "SNFT", deployer))
+            "SimpleNFT.sol", deployer, abi.encodeCall(SimpleNFT.initialize, ("SimpleNFT", "SNFT", deployer))
         );
         console.log("SimpleNFT proxy:", nftProxy);
 
         address marketplaceProxy = Upgrades.deployTransparentProxy(
-            "Marketplace.sol",
-            deployer,
-            abi.encodeCall(Marketplace.initialize, (deployer))
+            "Marketplace.sol", deployer, abi.encodeCall(Marketplace.initialize, (deployer))
         );
         console.log("Marketplace proxy:", marketplaceProxy);
 
