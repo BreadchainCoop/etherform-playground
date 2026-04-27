@@ -4,6 +4,7 @@ pragma solidity ^0.8.20;
 import {ERC721Upgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol";
 import {Ownable2StepUpgradeable} from "@openzeppelin/contracts-upgradeable/access/Ownable2StepUpgradeable.sol";
 
+// trigger: re-test release-testnet workflow
 contract SimpleNFT is ERC721Upgradeable, Ownable2StepUpgradeable {
     uint256 private _nextTokenId;
 
