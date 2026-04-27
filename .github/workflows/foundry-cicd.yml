@@ -20,6 +20,7 @@ jobs:
       deploy-script: "script/Deploy.s.sol:Deploy"
       run-slither: false
       run-coverage: true
+      etherform-ref: "Rubydusa/sticky-pr-comment-with-addresses"
     secrets:
       PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
       RPC_URL: ${{ secrets.RPC_URL }}
