@@ -4,6 +4,7 @@ on:
   pull_request:
     branches:
       - main
+    types: [opened, synchronize, reopened, closed]
   push:
     branches:
       - main
@@ -13,14 +14,15 @@ jobs:
   foundry:
     uses: BreadchainCoop/etherform/.github/workflows/_foundry-cicd.yml@Rubydusa/address-release-on-merge
     permissions:
-      contents: read
+      contents: write
       pull-requests: write
     with:
       deploy-on-pr: true
       deploy-script: "script/Deploy.s.sol:Deploy"
       run-slither: false
       run-coverage: true
+      release-on-merge: true
+      etherform-ref: Rubydusa/address-release-on-merge
     secrets:
       PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
       RPC_URL: ${{ secrets.RPC_URL }}
-
